@@ -1,0 +1,41 @@
+<<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tugas JavaScript Sederhana</title>
+
+  <!-- Menghubungkan ke file CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <h2>Ubah Tampilan Halaman</h2>
+
+  <label>Warna Latar:</label>
+  <select id="bgColor">
+    <option value="white">Putih</option>
+    <option value="lightblue">Biru Muda</option>
+    <option value="lightgreen">Hijau Muda</option>
+    <option value="lightgray">Abu-abu Muda</option>
+  </select>
+
+  <div>
+    <button id="fontPlus">Perbesar Tulisan</button>
+    <button id="fontMinus">Perkecil Tulisan</button>
+    <button id="darkMode">Mode Gelap</button>
+    <button id="fontStyle">Ganti Font</button>
+  </div>
+
+  <hr>
+
+  <h3>To-Do List</h3>
+  <input type="text" id="taskInput" placeholder="Tulis tugas...">
+  <button id="addTask">Tambah</button>
+  <ul id="taskList"></ul>
+
+  <!-- Menghubungkan ke file JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>
+

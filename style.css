@@ -1,0 +1,40 @@
+body {
+  font-family: sans-serif;
+  background-color: white;
+  color: black;
+  text-align: center;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+button {
+  margin: 5px;
+  padding: 5px 10px;
+  border: none;
+  background: #007bff;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #0056b3;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  background: #eee;
+  margin: 5px auto;
+  padding: 5px;
+  width: 200px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+li.completed {
+  text-decoration: line-through;
+  color: gray;
+}
