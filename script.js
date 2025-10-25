@@ -1,59 +1,50 @@
-document.addEventListener("DOMContentLoaded", function() {
-
-  // Ubah warna latar belakang
-  const bgColor = document.getElementById("bgColor");
-  bgColor.addEventListener("change", function() {
-    document.body.style.backgroundColor = this.value;
-  });
-
-  // Ubah ukuran font
-  let size = 16;
-  document.getElementById("fontPlus").onclick = () => {
-    size += 2;
-    document.body.style.fontSize = size + "px";
-  };
-  document.getElementById("fontMinus").onclick = () => {
-    size -= 2;
-    document.body.style.fontSize = size + "px";
-  };
-
-  // Mode gelap
-  let dark = false;
-  document.getElementById("darkMode").onclick = () => {
-    dark = !dark;
-    document.body.style.backgroundColor = dark ? "#222" : "white";
-    document.body.style.color = dark ? "white" : "black";
-  };
-
-  // Ganti gaya font
-  let serif = false;
-  document.getElementById("fontStyle").onclick = () => {
-    serif = !serif;
-    document.body.style.fontFamily = serif ? "serif" : "sans-serif";
-  };
-
-  // To-Do List
-  const addBtn = document.getElementById("addTask");
+function addTask() {
   const input = document.getElementById("taskInput");
-  const list = document.getElementById("taskList");
+  const taskText = input.value.trim();
+  if (taskText === "") return;
 
-  addBtn.addEventListener("click", function() {
-    const text = input.value.trim();
-    if (text === "") return;
+  const ul = document.getElementById("taskList");
+  const li = document.createElement("li");
 
-    const li = document.createElement("li");
-    li.textContent = text;
+  const span = document.createElement("span");
+  span.textContent = taskText;
+  span.onclick = function() {
+    li.classList.toggle("completed");
+  };
 
-    // Klik sekali → tandai selesai
-    li.onclick = () => li.classList.toggle("completed");
+  // Grup tombol
+  const btnGroup = document.createElement("div");
+  btnGroup.className = "btn-group";
 
-    // Klik dua kali → edit teks
-    li.ondblclick = () => {
-      const edit = prompt("Edit tugas:", li.textContent);
-      if (edit) li.textContent = edit;
-    };
+  // Tombol edit
+  const editBtn = document.createElement("button");
+  editBtn.textContent = "Edit";
+  editBtn.className = "editBtn";
+  editBtn.onclick = function() { editTask(span); };
 
-    list.appendChild(li);
-    input.value = "";
-  });
-});
+  // Tombol hapus
+  const delBtn = document.createElement("button");
+  delBtn.textContent = "Hapus";
+  delBtn.className = "deleteBtn";
+  delBtn.onclick = function() { deleteTask(li); };
+
+  btnGroup.appendChild(editBtn);
+  btnGroup.appendChild(delBtn);
+
+  li.appendChild(span);
+  li.appendChild(btnGroup);
+  ul.appendChild(li);
+
+  input.value = "";
+}
+
+function deleteTask(li) {
+  li.remove();
+}
+
+function editTask(span) {
+  const newText = prompt("Edit tugas:", span.textContent);
+  if (newText && newText.trim() !== "") {
+    span.textContent = newText;
+  }
+}
