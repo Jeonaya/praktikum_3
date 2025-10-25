@@ -48,3 +48,4 @@ function editTask(span) {
     span.textContent = newText;
   }
 }
+
